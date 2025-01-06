@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tentang Kami</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans Typewriter', sans-serif;
+            background-color: whitesmoke;
+            margin: 10px;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 40px;
+            color: black;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .text-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .text-box {
+            background-color: #a58877;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            margin-top: 55px;
+        }
+
+        .slider-container {
+            flex: 1;
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 10px;
+        }
+
+        .slide {
+            flex: 0 0 100%;
+            width: calc(100% - 10px);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 540px;
+            object-fit: cover;
+        }
+
+        .arrows {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .arrow {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 50%;
+        }
+
+        p {
+            text-align: center;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .slider-container, .text-content {
+                max-width: 100%;
+            }
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-content">
+            <div class="text-box">
+                <h1>Tentang Kami</h1>
+                <p>
+                    Warung Cita Rasa berdiri dengan semangat untuk menghadirkan
+                    kelezatan makanan khas Indonesia yang autentik dan berkualitas.
+                    Kami percaya bahwa makanan bukan hanya soal rasa tapi juga cerita dan kenangan.
+                </p>
+                <p>
+                    Didirikan sejak 2021, Warung Cita Rasa telah menjadi tempat 
+                    favorit untuk keluarga, teman, dan siapa saja yang ingin menikmati 
+                    masakan rumahan dengan harga bersahabat. 
+                    Semua masakan kami dibuat dengan bahan segar, 
+                    bumbu alami, dan tentu saja penuh cinta.
+                </p>
+                <p>
+                    Kami juga berkomitmen untuk menciptakan suasana yang ramah dan nyaman, 
+                    sehingga setiap kunjungan ke Warung Cita Rasa selalu terasa istimewa. 
+                </p>
+            </div>
+        </div>
+        <div class="slider-container">
+            <div class="slides">
+                <div class="slide"><img src="image/logo.jpg" alt="Gambar 1" /></div>
+                <div class="slide"><img src="image/rempah 1.jpg" alt="Gambar 2" /></div>
+                <div class="slide"><img src="image/rempah 2.jpg" alt="Gambar 3" /></div>
+                <div class="slide"><img src="image/sayur 1.jpg" alt="Gambar 4" /></div>
+                <div class="slide"><img src="image/sayur 2.jpg" alt="Gambar 5" /></div>
+            </div>
+            <div class="arrows">
+                <button class="arrow prev">&#60;</button>
+                <button class="arrow next">&#62;</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const slides = document.querySelector('.slides');
+        const slideItems = document.querySelectorAll('.slide');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+        let currentIndex = 0;
+
+        // Fungsi untuk mengupdate slide
+        function updateSlide(index) {
+            slides.style.transform = `translateX(-${index * (slideItems[0].clientWidth + 10)}px)`;
+        }
+
+        // Event listener untuk tombol panah
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex === 0) ? slideItems.length - 1 : currentIndex - 1;
+            updateSlide(currentIndex);
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex === slideItems.length - 1) ? 0 : currentIndex + 1;
+            updateSlide(currentIndex);
+        });
+        
+
+        // Sesuaikan ukuran saat jendela diubah
+        window.addEventListener('resize', () => updateSlide(currentIndex));
+    </script>
+    <footer>Copyright © 2025 Shifa Afifah - Warung Cita Rasa</footer>
+</body>
+</html>

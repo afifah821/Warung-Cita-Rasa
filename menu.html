@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Warung Cita Rasa</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans Typewriter', sans-serif;
+            margin: 0;
+            padding: 10px;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 40px;
+        }
+        p {
+            text-align: center;
+            font-size: 16px;
+            margin: 10px;
+            padding-bottom: 20px;
+            padding-left: 20px;  /* Menambahkan jarak kiri */
+            padding-right: 20px; /* Menambahkan jarak kanan */
+        }
+        h2 {
+            margin-left: 20px;
+            font-size: 30px;
+            margin-top: 30px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 7px;
+            margin-top: 10px;
+            padding: 10px;
+        }
+        .menu-item {
+            text-align: center;
+            width: 20%; /* Mengatur lebar gambar untuk 4 gambar per baris */
+            margin-bottom: 20px;
+        }
+        .menu-item img {
+            width: 100%;
+            height: 300px;
+            border-radius: 10px; /* Menambahkan lengkungan pada sudut gambar */
+            margin-top: 10px; /* Menambahkan jarak di atas gambar */
+            margin-bottom: 10px;
+            object-fit: cover;
+            padding: 0;
+            margin: 0;
+        }
+        .caption {
+            margin-top: 5px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .menu-item {
+                width: 48%; /* Menampilkan 2 gambar per baris pada layar lebih kecil */
+            }
+        }
+        @media (max-width: 480px) {
+            .menu-item {
+                width: 48%; /* Menampilkan 1 gambar per baris pada ponsel */
+            }
+            h2 {
+                margin-left: 0;
+            }
+        }
+
+        pre {
+        font-size: 15px;
+        text-align: center;
+        width: 100%;
+        bottom: 15px;
+      }
+    </style>
+</head>
+<body>
+
+    <h1>Menu Warung Cita Rasa</h1>
+    <p>Kami menyajikan berbagai hidangan khas Indonesia yang kaya rasa dengan perpaduan bahan segar 
+        dan bumbu pilihan. Nikmatilah berbagai hidangan lezat yang menggugah selera!</p>
+
+    <h2>Makanan</h2>
+    <div class="container">
+        <div class="menu-item">
+            <img src="image/nasi goreng.jpg" alt="Nasi Goreng">
+            <p class="caption">Nasi Goreng</p>
+        </div>
+        <div class="menu-item">
+            <img src="image/nasi uduk.jpg" alt="Nasi Uduk">
+            <p class="caption">Nasi Uduk</p>
+        </div>
+        <div class="menu-item">
+            <img src="image/ayam geprek.jpg" alt="Ayam Geprek">
+            <p class="caption">Ayam Geprek</p>
+        </div>
+        <div class="menu-item">
+            <img src="image/rawon.jpg" alt="Rawon">
+            <p class="caption">Rawon</p>
+        </div>
+        <div class="menu-item">
+            <img src="image/soto ayam.jpg" alt="Soto Ayam">
+            <p class="caption">Soto Ayam</p>
+        </div>
+        <div class="menu-item">
+            <img src="image/soto daging.jpg" alt="Soto Daging">
+            <p class="caption">Soto Daging</p>
+        </div>
+        <div class="menu-item">
+            <img src="image/gado-gado.jpg" alt="Gado-Gado">
+            <p class="caption">Gado-Gado</p>
+        </div>
+        <div class="menu-item">
+            <img src="image/ketoprak.jpg" alt="Ketoprak">
+            <p class="caption">Ketoprak</p>
+        </div>
+        <div class="menu-item">
+            <img src="image/getuk.jpg" alt="Getuk">
+            <p class="caption">Getuk</p>
+        </div>
+        <div class="menu-item">
+            <img src="image/pisang goreng.jpg" alt="Pisang Goreng">
+            <p class="caption">Pisang Goreng</p>
+        </div>
+        <div class="menu-item">
+            <img src="image/tempe mendoan.jpg" alt="Tempe Mendoan">
+            <p class="caption">Tempe Mendoan</p>
+        </div>
+        <div class="menu-item">
+            <img src="image/tahu isi.jpg" alt="Tahu Isi">
+            <p class="caption">Tahu Isi</p>
+        </div>
+    </div>
+
+    <h2>Minuman</h2>
+    <div class="container">
+        <div class="menu-item">
+            <img src="image/es teh manis.jpg" alt="Es Teh Manis">
+            <p class="caption">Es Teh Manis</p>
+        </div>
+        <div class="menu-item">
+            <img src="image/es jeruk.jpg" alt="Es Jeruk">
+            <p class="caption">Es Jeruk</p>
+        </div>
+        <div class="menu-item">
+            <img src="image/es kelapa.jpg" alt="Es Kelapa">
+            <p class="caption">Es Kelapa</p>
+        </div>
+        <div class="menu-item">
+            <img src="image/es kopyor.jpg" alt="Es Kopyor">
+            <p class="caption">Es Kopyor</p>
+        </div>
+        <div class="menu-item">
+            <img src="image/es cendol.jpg" alt="Es Cendol">
+            <p class="caption">Es Cendol</p>
+        </div>
+        <div class="menu-item">
+            <img src="image/es teler.jpg" alt="Es Teler">
+            <p class="caption">Es Teler</p>
+        </div>
+        <div class="menu-item">
+            <img src="image/es pisang ijo.jpg" alt="Es Pisang Ijo">
+            <p class="caption">Es Pisang Ijo</p>
+        </div>
+        <div class="menu-item">
+            <img src="image/kunyit asem.jpg" alt="Kunyit Asem">
+            <p class="caption">Kunyit Asem</p>
+        </div>
+        <div class="menu-item">
+            <img src="image/bajigur.jpg" alt="Bajigur">
+            <p class="caption">Bajigur</p>
+        </div>
+        <div class="menu-item">
+            <img src="image/wedang ronde.jpg" alt="Wedang Ronde">
+            <p class="caption">Wedang Ronde</p>
+        </div>
+        <div class="menu-item">
+            <img src="image/wedang jahe.jpg" alt="Wedang Jahe">
+            <p class="caption">Wedang Jahe</p>
+        </div>
+    </div>
+    <pre>Copyright © 2025 Shifa Afifah - Warung Cita Rasa</pre>
+</body>
+</html>

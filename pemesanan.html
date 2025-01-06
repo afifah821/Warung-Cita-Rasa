@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pemesanan</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans Typewriter', sans-serif;
+            margin: 15px;
+            background-color: whitesmoke;
+        }
+        h1 {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 40px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            top: 10px;
+            bottom: 10px;
+        }
+        form {
+            background-color: #a58877;
+            padding: 17px;
+            margin: 0 35px;
+            border-radius: 12px;
+        }
+        table {
+            width: 100%;
+            margin-bottom: 10px;
+            border-collapse: collapse;
+        }
+        table td, table th {
+            padding: 5px 10px;
+            border: 1px solid #000;
+            line-height: 1.3;
+        }
+        table th {
+            background-color: wheat;
+        }
+        table td:first-child, /* Kolom pertama (nomor) */
+        table th:first-child,
+        table td:nth-child(3), /* Kolom ketiga (harga) */
+        table th:nth-child(3) {
+        text-align: center; /* Rata kiri untuk kolom makanan dan harga */
+}
+        table td:nth-child(2), /* Kolom kedua (makanan) */
+        table th:nth-child(2){
+        text-align: left;  
+        }
+        input[type="text"], input[type="number"], textarea {
+            width: calc(100% - 20px);
+            padding: 3.5px;
+            font-family: 'Lucida Sans Typewriter', sans-serif;
+            font-size: 16px;
+        }
+        textarea {
+            resize: none;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button#reset {
+            background-color: #dcdcdc;
+        }
+        button#confirm {
+            background-color: #f5deb3;
+            color: #000;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 1px solid #000;
+            border-radius: 15px;
+            padding: 20px;
+            z-index: 20;
+            width: 90%;
+            max-width: 400px;
+            line-height: 1.15;
+        }
+        .popup button {
+            background-color: #a58877;
+        }
+        .popup small {
+            display: block;
+            margin-top: 20px;
+        }
+        .popup h2 {
+        line-height: 1.5; /* Mengatur spasi antar baris menjadi 1.5 */
+        text-align: center; /* Mengatur teks "Pesanan Anda" di tengah */
+        }
+        pre {
+        font-size: 15px;
+        text-align: center;
+        width: 100%;
+        bottom: 15px;
+        top: 15px;
+      }
+    </style>
+</head>
+<body>
+
+    <h1>Pemesanan</h1>
+    <form id="orderForm">
+        <label>No. Meja:<br>
+            <input type="text" id="tableNumber" placeholder="Masukkan nomor meja anda">
+        </label>
+        <br><br>
+        <label>Pilih Makanan:</label>
+        <table>
+            <tr>
+                <th>No.</th>
+                <th style="text-align: center;">Makanan</th>
+                <th>Harga</th>
+                <th>Jumlah</th>
+            </tr>
+            <tr>
+                <td>1.</td>
+                <td>Nasi Goreng</td>
+                <td>Rp 12.000</td>
+                <td><input type="number" min="0" id="nasiGoreng" value="0"></td>
+            </tr>
+            <tr>
+                <td>2.</td>
+                <td>Nasi Uduk</td>
+                <td>Rp 10.000</td>
+                <td><input type="number" min="0" id="nasiUduk" value="0"></td>
+            </tr>
+            <tr>
+                <td>3.</td>
+                <td>Soto Ayam</td>
+                <td>Rp 15.000</td>
+                <td><input type="number" min="0" id="sotoAyam" value="0"></td>
+            </tr>
+            <tr>
+                <td>4.</td>
+                <td>Soto Daging</td>
+                <td>Rp 20.000</td>
+                <td><input type="number" min="0" id="sotoDaging" value="0"></td>
+            </tr>
+            <tr>
+                <td>5.</td>
+                <td>Ayam Geprek</td>
+                <td>Rp 15.000</td>
+                <td><input type="number" min="0" id="ayamGeprek" value="0"></td>
+            </tr>
+            <tr>
+                <td>6.</td>
+                <td>Gado-Gado</td>
+                <td>Rp 12.000</td>
+                <td><input type="number" min="0" id="gadoGado" value="0"></td>
+            </tr>
+            <tr>
+                <td>7.</td>
+                <td>ketoprak</td>
+                <td>Rp 12.000</td>
+                <td><input type="number" min="0" id="ketoprak" value="0"></td>
+            </tr>
+            <tr>
+                <td>8.</td>
+                <td>Rawon</td>
+                <td>Rp 20.000</td>
+                <td><input type="number" min="0" id="rawon" value="0"></td>
+            </tr>
+            <tr>
+                <td>9.</td>
+                <td>Tahu Isi</td>
+                <td>Rp 10.000</td>
+                <td><input type="number" min="0" id="tahuIsi" value="0"></td>
+            </tr>
+            <tr>
+                <td>10.</td>
+                <td>Tempe Mendoan</td>
+                <td>Rp 10.000</td>
+                <td><input type="number" min="0" id="tempeMendoan" value="0"></td>
+            </tr>
+            <tr>
+                <td>11.</td>
+                <td>Pisang Goreng</td>
+                <td>Rp 10.000</td>
+                <td><input type="number" min="0" id="pisangGoreng" value="0"></td>
+            </tr>
+            <tr>
+                <td>12.</td>
+                <td>Getuk</td>
+                <td>Rp 8.000</td>
+                <td><input type="number" min="0" id="Getuk" value="0"></td>
+            </tr>
+        </table>
+
+        <label>Pilih Minuman:</label>
+        <table>
+            <tr>
+                <th>No.</th>
+                <th style="text-align: center;">Minuman</th>
+                <th>Harga</th>
+                <th>Jumlah</th>
+            </tr>
+            <tr>
+                <td>1.</td>
+                <td>Es Teh Manis</td>
+                <td>Rp 5.000</td>
+                <td><input type="number" min="0" id="esTehManis" value="0"></td>
+            </tr>
+            <tr>
+                <td>2.</td>
+                <td>Es Jeruk</td>
+                <td>Rp 6.000</td>
+                <td><input type="number" min="0" id="esJeruk" value="0"></td>
+            </tr>
+            <tr>
+                <td>3.</td>
+                <td>Es Kelapa</td>
+                <td>Rp 8.000</td>
+                <td><input type="number" min="0" id="esKelapa" value="0"></td>
+            </tr>
+            <tr>
+                <td>4.</td>
+                <td>Es Cendol</td>
+                <td>Rp 7.000</td>
+                <td><input type="number" min="0" id="esCendol" value="0"></td>
+            </tr>
+            <tr>
+                <td>5.</td>
+                <td>Es kopyor</td>
+                <td>Rp 7.000</td>
+                <td><input type="number" min="0" id="esKopyor" value="0"></td>
+            </tr>
+            <tr>
+                <td>6.</td>
+                <td>Es Pisang Ijo</td>
+                <td>Rp 12.000</td>
+                <td><input type="number" min="0" id="esPisangIjo" value="0"></td>
+            </tr>
+            <tr>
+                <td>7.</td>
+                <td>Es Teler</td>
+                <td>Rp 12.000</td>
+                <td><input type="number" min="0" id="esTeler" value="0"></td>
+            </tr>
+            <tr>
+                <td>8.</td>
+                <td>Bajigur</td>
+                <td>Rp 7.000</td>
+                <td><input type="number" min="0" id="bajigur" value="0"></td>
+            </tr>
+            <tr>
+                <td>9.</td>
+                <td>Kunyit Asem</td>
+                <td>Rp 6.000</td>
+                <td><input type="number" min="0" id="kunyitAsem" value="0"></td>
+            </tr>
+            <tr>
+                <td>10.</td>
+                <td>Wedang Jahe</td>
+                <td>Rp 6.000</td>
+                <td><input type="number" min="0" id="wedangJahe" value="0"></td>
+            </tr>
+            <tr>
+                <td>11.</td>
+                <td>Wedang Ronde</td>
+                <td>Rp 10.000</td>
+                <td><input type="number" min="0" id="wedangRonde" value="0"></td>
+            </tr>
+        </table>
+
+        <label>Catatan Pesanan:</label>
+        <textarea id="note" maxlength="200" placeholder="Masukkan catatan anda"></textarea>
+        <br>
+        <button type="button" id="confirm" onclick="confirmOrder()">Konfirmasi</button>
+        <button type="reset" id="reset">Reset</button>
+    </form>
+
+    <div class="popup" id="popup">
+        <h2>Pesanan Anda</h2>
+        <p id="popupContent"></p>
+        <small>Terima Kasih pesanan anda akan kami proses</small>
+        <small>*Silahkan bayar dikasir setelah anda selesai makan</small>
+        <button onclick="goToIndex()">Kembali</button>
+    </div>
+
+    <script>
+        function confirmOrder() {
+            const tableNumber = document.getElementById('tableNumber').value;
+            const nasiGoreng = parseInt(document.getElementById('nasiGoreng').value) || 0;
+            const nasiUduk = parseInt(document.getElementById('nasiUduk').value) || 0;
+            const sotoAyam = parseInt(document.getElementById('sotoAyam').value) || 0;
+            const sotoDaging = parseInt(document.getElementById('sotoDaging').value) || 0;
+            const ayamGeprek = parseInt(document.getElementById('ayamGeprek').value) || 0;
+            const gadoGado = parseInt(document.getElementById('gadoGado').value) || 0;
+            const ketoprak = parseInt(document.getElementById('ketoprak').value) || 0;
+            const rawon = parseInt(document.getElementById('rawon').value) || 0;
+            const tahuIsi = parseInt(document.getElementById('ayamGeprek').value) || 0;
+            const tempeMendoan = parseInt(document.getElementById('tempeMendoan').value) || 0;
+            const pisangGoreng = parseInt(document.getElementById('pisangGoreng').value) || 0;
+            const getuk = parseInt(document.getElementById('Getuk').value) || 0;
+            const esTehManis = parseInt(document.getElementById('esTehManis').value) || 0;
+            const esJeruk = parseInt(document.getElementById('esJeruk').value) || 0;
+            const esKelapa = parseInt(document.getElementById('esKelapa').value) || 0;
+            const esCendol = parseInt(document.getElementById('esCendol').value) || 0;
+            const esKopyor = parseInt(document.getElementById('esKopyor').value) || 0;
+            const esPisangIjo = parseInt(document.getElementById('esPisangIjo').value) || 0;
+            const esTeler = parseInt(document.getElementById('esTeler').value) || 0;
+            const bajigur = parseInt(document.getElementById('bajigur').value) || 0;
+            const kunyitAsem = parseInt(document.getElementById('kunyitAsem').value) || 0;
+            const wedangJahe = parseInt(document.getElementById('wedangJahe').value) || 0;
+            const wedangRonde = parseInt(document.getElementById('wedangRonde').value) || 0;
+            const note = document.getElementById('note').value || '-';
+
+            if (!tableNumber && !nasiGoreng && !nasiUduk && !sotoAyam && !sotoDaging && !ayamGeprek && !gadoGado && !ketoprak 
+            && !rawon && !tahuIsi  && !tempeMendoan && !pisangGoreng && !getuk && !esTehManis && !esJeruk && !esKelapa
+            && !esCendol && !esKopyor && !esPisangIjo && !esTeler && !bajigur && !kunyitAsem && !wedangJahe && !wedangRonde) {
+                alert('Silahkan masukkan pesanan Anda!');
+                return;
+            }
+
+            const total = (nasiGoreng * 12000) + (nasiUduk * 10000) + (sotoAyam * 15000) + (sotoDaging * 20000) + (ayamGeprek * 15000) + (gadoGado * 12000)
+            + (ketoprak * 12000) + (rawon * 20000) + (tahuIsi * 10000) + (tempeMendoan * 10000) + (pisangGoreng * 10000) + (getuk * 8000)
+            + (esTehManis * 5000) + (esJeruk * 6000) + (esKelapa * 8000) + (esCendol * 7000) + (esKopyor * 7000) + (esPisangIjo * 12000)
+            + (esTeler * 12000) + (bajigur * 7000) + (kunyitAsem * 6000) + (wedangJahe * 6000) + (wedangRonde * 10000);
+
+            let orderSummary = `No. Meja: ${tableNumber || '-'}<br>`;
+            orderSummary += `Pesanan:<br>`;
+            if (nasiGoreng) orderSummary += `Nasi Goreng: ${nasiGoreng}<br>`;
+            if (nasiUduk) orderSummary += `Nasi Uduk: ${nasiUduk}<br>`;
+            if (sotoAyam) orderSummary += `Soto Ayam: ${sotoAyam}<br>`;
+            if (sotoDaging) orderSummary += `Soto Daging: ${sotoDaging}<br>`;
+            if (ayamGeprek) orderSummary += `Ayam Geprek : ${ayamGeprek}<br>`;
+            if (gadoGado) orderSummary += `Gado-Gado: ${gadoGado}<br>`;
+            if (ketoprak) orderSummary += `Ketoprak: ${ketoprak}<br>`;
+            if (rawon) orderSummary += `Rawon: ${rawon}<br>`;
+            if (tahuIsi) orderSummary += `Tahu Isi: ${tahuIsi}<br>`;
+            if (tempeMendoan) orderSummary += `Tempe Mendoan: ${tempeMendoan}<br>`;
+            if (pisangGoreng) orderSummary += `Pisang Goreng: ${pisangGoreng}<br>`;
+            if (getuk) orderSummary += `Getuk: ${getuk}<br>`;
+            if (esTehManis) orderSummary += `Es Teh Manis: ${esTehManis}<br>`;
+            if (esJeruk) orderSummary += `Es Jeruk: ${esJeruk}<br>`;
+            if (esKelapa) orderSummary += `Es Kelapa: ${esKelapa}<br>`;
+            if (esCendol) orderSummary += `Es Cendol: ${esCendol}<br>`;
+            if (esKopyor) orderSummary += `Es Kopyor: ${esKopyor}<br>`;
+            if (esPisangIjo) orderSummary += `Es Pisang Ijo: ${esPisangIjo}<br>`;
+            if (esTeler) orderSummary += `Es Teler: ${esTeler}<br>`;
+            if (bajigur) orderSummary += `Bajigur: ${bajigur}<br>`;
+            if (kunyitAsem) orderSummary += `Kunyit Asem: ${kunyitAsem}<br>`;
+            if (wedangJahe) orderSummary += `Wedang Jahe: ${wedangJahe}<br>`;
+            if (wedangRonde) orderSummary += `Wedang Ronde: ${wedangRonde}<br>`;
+            orderSummary += `Catatan Pesanan: ${note}<br>`;
+            orderSummary += `Total Pembayaran: Rp ${total.toLocaleString()}<br>`;
+
+            document.getElementById('popupContent').innerHTML = orderSummary;
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function goToIndex() {
+            window.location.href = 'index.html';
+        }
+
+    </script>
+    <pre>Copyright © 2025 Shifa Afifah - Warung Cita Rasa</pre>
+</body>
+</html>

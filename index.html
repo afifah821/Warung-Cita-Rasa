@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Warung Cita Rasa</title>
+    <style>
+      body {
+        font-family: 'Lucida Sans Typewriter', sans-serif;
+        background-color: whitesmoke;
+        color: black;
+        margin: 0;
+        padding: 5px;
+      }
+
+      h1 {
+        text-align: left;
+        color: black;
+        font-size: 40px;
+        margin-top: 0;
+        margin-bottom: 0;
+        display: flex;
+        align-items: center; 
+      }
+
+      h1 img {
+        width: 95px;
+        height: auto;
+        vertical-align: left;
+        margin-right: 10px;
+      }
+
+      p {
+        line-height: 1.5;
+        margin-bottom: 0.5cm;
+        font-size: 16px;
+      }
+
+      p b {
+        font-size: 22px;
+      }
+
+      nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        position: relative;
+        font-size: 16px;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        font-family: 'Lucida Sans Typewriter', sans-serif;
+        text-decoration: none;
+        color: #a58877;
+        font-size: 16px;
+        margin: 8px 10px;
+        padding: 10px 20px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      nav a:hover {
+        background-color: #705757;
+        color: whitesmoke;
+      }
+
+      nav .order-here {
+        background-color: #a58877;
+        color: black;
+        margin-left: auto;
+      }
+
+      .welcome-box {
+        background-color: #a58877;
+        border-radius: 15px;
+        padding: 25px;
+        margin: 35px auto;
+        max-width: 800px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .welcome-box p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: black;
+      }
+
+      .welcome-box p b {
+        font-size: 22px;
+      }
+
+      hr {
+        border: 0;
+        height: 4px;
+        background-color: black;
+        margin: 0;
+      }
+
+      .image-slider {
+        position: relative;
+        width: 70%;
+        margin: 20px auto;
+        overflow: hidden;
+        gap: 20px;
+      }
+
+      .slides {
+        display: flex;
+        gap: 30px; /* Menambahkan jarak antar gambar */
+        transition: transform 0.5s ease;
+      }
+
+      .slide {
+        width: 43%;
+        height: 560px;
+        margin: 0;
+        border-radius: 20px;
+        object-fit: cover;
+      }
+
+      .nav-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(255, 255, 255, 0.7);
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 10;
+      }
+
+      .prev {
+        left: 10px;
+      }
+
+      .next {
+        right: 10px;
+      }
+
+      pre {
+        font-size: 15px;
+        text-align: center;
+        width: 100%;
+        bottom: 15px;
+        top: 15px;
+      }
+
+      h1 span {
+        font-family: 'Lucida Sans Typewriter', sans-serif;
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 32px;
+        }
+
+        nav a {
+          font-size: 14px;
+          padding: 8px 16px;
+        }
+
+        .welcome-box p {
+          font-size: 16px;
+        }
+
+        .slide {
+          min-width: 90%; /* Untuk tampilan mobile, gambar lebih besar */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      <img src="image/logo index.png" alt="Logo" />
+      <span><b>Warung Cita Rasa</b></span>
+    </h1>
+
+    <hr />
+    <nav>
+      <a href="index.html">Beranda</a>
+      <a href="about.html">Tentang Kami</a>
+      <a href="menu.html">Menu</a>
+      <a href="kontak.html">Kontak</a>
+      <a href="pemesanan.html" class="order-here">Pesan Disini</a>
+    </nav>
+
+    <hr />
+
+    <div class="welcome-box">
+      <p><b>Selamat Datang di Warung Cita Rasa!</b></p>
+      <p>
+        Nikmati kelezatan makanan khas Indonesia yang dibuat dengan cinta dan bahan-bahan terbaik.
+        Di sini, setiap hidangan adalah cerita rasa yang membawa pada nostalgia dan kehangatan rumah.
+      </p>
+    </div>
+
+    <div class="image-slider">
+      <div class="slides">
+        <img src="image/warung 1.jpg" alt="image 1" class="slide" />
+        <img src="image/warung 2.jpg" alt="image 2" class="slide" />
+        <img src="image/warung 3.jpg" alt="image 3" class="slide" />
+        <img src="image/warung 8.jpg" alt="image 4" class="slide" />
+        <img src="image/warung 6.jpg" alt="image 5" class="slide" />
+        <img src="image/warung 4.jpg" alt="image 6" class="slide" />
+      </div>
+      <button class="nav-button prev">❮</button>
+      <button class="nav-button next">❯</button>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const slides = document.querySelector('.slides');
+        const slideImages = document.querySelectorAll('.slide');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+        let index = 0;
+
+        // Fungsi untuk menggeser gambar
+        function moveToSlide(index) {
+          const slideWidth = slideImages[0].clientWidth + 12; // 12px gap
+          slides.style.transform = `translateX(-${index * slideWidth}px)`;
+        }
+
+        // Tombol previous
+        prevButton.addEventListener('click', function () {
+          if (index > 0) {
+            index--;
+            moveToSlide(index);
+          } else {
+            index = slideImages.length - 1;
+            moveToSlide(index);
+          }
+        });
+
+        // Tombol next
+        nextButton.addEventListener('click', function () {
+          if (index < slideImages.length - 1) {
+            index++;
+            moveToSlide(index);
+          } else {
+            index = 0;
+            moveToSlide(index);
+          }
+        });
+
+        // Inisialisasi tampilan awal
+        moveToSlide(index);
+      });
+    </script>
+    <pre>Copyright © 2025 Shifa Afifah - Warung Cita Rasa</pre>
+  </body>
+</html>
